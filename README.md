@@ -51,6 +51,11 @@ To see the Docker images on your machine:
 docker images
 ```
 
+To remove all the Docker images on your machine:
+```
+docker rmi $(docker images -a -q)
+```
+
 To run the Docker container from the newly built image, in the project folder, run:
 ```
 docker run --name ${containerNameOfYourChoice} -p 9007:9007 -d ${imageNameOfYourChoice}
@@ -60,6 +65,12 @@ To see the Docker containers on your machine:
 ```
 docker ps (for running containers)
 docker ps -a (for stopped containers)
+```
+
+To stop and remove all the Docker containers on your machine:
+```
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 ```
 
 The app now should be running on http://localhost:9007, displaying a 'Hello 
